@@ -1,57 +1,80 @@
 `use script`;
 
 // Daeclaration:
-const tax = 0.075 ;
-let grossSalary=0;
-let employ = [];
- employ[0] = new Employee ("1000" ,"Ghazi Samer","Administration","Senior","empImage.jpg")
- employ[1] = new Employee ("1001" ,"Lana Ali","Finance","Senior","empImage.jpg")
- employ[2] = new Employee ("1002" ,"Tamara Ayoub","Marketing","Senior","empImage.jpg")
- employ[3] = new Employee ("1003" ,"Safi Walid" ,"Administration","Mid-Senior","empImage.jpg")
- employ[4] = new Employee ("1004" ,"Omar Zaid","Development","Senior","empImage.jpg")
- employ[5] = new Employee ("1005" ,'Rana Saleh',"Development","Junior","empImage.jpg")
- employ[6] = new Employee ("1006" ,"Hadi Ahmad","Finance","Mid-Senior","empImage.jpg")
+let cardId = document.getElementById("cardId");
+let form = document.getElementById("card");
+
+
+
 
  //Constructor:
 function Employee(id, name, department, level, image) {
-    this.employeeId = id;
-    this.fullName = name;
+    
+    this.id = rdmId();
+    this.name = name;
     this.department = department;
     this.level = level;
     this.image = image;
-}
 
-Employee.prototype.sal = function () {
-    if (this.level== "Senior") {
-        grossSalary = getRndInteger(1500, 2000);
-    }
-    else if(this.level == "Mid-Senior"){
-        grossSalary = getRndInteger(1000, 1500);
-    }
-    else if(this.level == "Junior"){
-        grossSalary = getRndInteger(500, 1000);
-    }
-    let netSalary = grossSalary - (grossSalary * tax);
-    this.salary = netSalary;
 }
 
 
 Employee.prototype.render = function () {
-    document.write(`<h3> The Name of the Employee is: ${this.fullName}  </h3>`)
-    document.write(`<h3> His /Her Salary : ${this.salary}</h3>`)
+    
+    // creating the image of Emolyee :
+    let imageEl = document.createElement('img');
+    imageEl.src = this.image;
+    cardId.appendChild(imageEl);
+
+    // createing h2 of Emplyee Name :
+    let fullName = document.createElement('h2');
+    fullName.textContent = `Name: ${this.name}` ; 
+    cardId.appendChild(fullName);
+
+    let empId = document.createElement('h2');
+    empId.textContent = `ID: ${this.id}` ; 
+    cardId.appendChild(empId); 
+
+    // createing h2 of department:
+    let departmentEI = document.createElement('h2');
+    departmentEI.textContent = `Department :${this.department}` ;
+    cardId.appendChild(departmentEI);
+    
+    // createing h2 of  level:
+    let levelEI = document.createElement('h2');
+    levelEI.textContent = `Level : ${this.level}` ;
+    cardId.appendChild(levelEI);
+    
 }
 
-for (i = 0; i < 6;i++){
-    employ[i].sal();
-    employ[i].render();
-    console.table(employ[i]);
+//Event listener
+form.addEventListener("submit", handleSubmit);
+
+
+// Functions:
+
+function rdmId() {
+  return Math.floor(1000 + Math.random() * 9000);
+}
+ 
+
+function handleSubmit(event) {
+
+    event.preventDefault();
+
+    let id = event.target.id.value;
+    let fullName = event.target.fullName.value;
+    let department = event.target.department.value;
+    let level = event.target.level.value;
+    let image = event.target.image.value;
+
+    // create a new employee card:
+    let newEmp = new Employee(id,fullName, department, level, image);
+    newEmp.render();
+    console.log(newEmp);
+
 }
 
 
-// Function:
-
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
 
 

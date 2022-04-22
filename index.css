@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    transition: 0.2s linear;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+header {
+    background-color: #95D1CC;
+    padding: 3rem;
+}
+
+header a.home {
+    padding-left: 1rem;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+header a.employee-gate {
+    padding-left: 20rem;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+header a.accounting {
+    padding-left: 25rem;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+
+main {
+    background-color: #5584AC;
+    display: flex;
+    padding: 1.8rem;
+    padding-left: 1.8rem;
+    align-items: center;
+}
+
+main fieldset {
+    /* background-color: #DDDDDD; */
+    font-size: 1rem;
+    padding: 0rem 3rem;
+
+
+}
+
+main form {
+    padding: 1rem 4rem;
+}
+
+main form input {
+    padding: 0.5rem;
+    border: 0.1rem solid black;
+    font-size: 1rem;
+    margin: 0rem -3rem;
+}
+
+main form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-left: -3rem;
+}
+
+main form section select {
+    padding: 0.5rem 1.5rem;
+    border: 0.1rem solid black;
+    font-size: .9rem;
+    font-weight: 400;
+    margin: 0rem -3rem;
+}
+
+.btn {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .5rem;
+    margin-top: 2rem;
+    background-color:black;
+    color: white;
+}
+
+
+
+#employeeCard{
+margin: 1rem 20rem 0rem 0rem;
+}
+
+#cardId h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    /* border: 0.1rem solid; */
+ 
+}
+
+footer {
+    background-color: #EEEEEE;
+    padding: 1rem;
+    border: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
