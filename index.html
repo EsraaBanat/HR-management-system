@@ -7,15 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Management System</title>
     <script src="https://kit.fontawesome.com/01b4e07893.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
     <header>
         <a class="home" href="index.html">Home</a>
-        <a class="employee gate" href="emplyee.html">Employee Gate</a>
+        <a class="employee-gate" href="emplyee.html">Employee Gate</a>
         <a class="accounting" href="accounting.html" target="_blank">Accounting Page</a>
     </header>
-    <main> </main>
+    <main id="main">
+        <section id="employeeCard">
+            <fieldset>
+                <form id="card">
+
+                    <label for="fullName">Full Name:</label><br>
+                    <input type="text" id="fullName" name="fullName"><br>
+
+                    <label for="department">Department:</label><br>
+                    <section id="department">
+                        <select name="department">
+                            <option value="administration">Administration</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="development">Development</option>
+                            <option value="finance">Finance</option>
+                        </select>
+                    </section>
+
+                    <label for="level">Your Level:</label><br>
+                    <section id="level">
+                        <select name="level">
+                            <option value="junior">Junior</option>
+                            <option value="midsenior">Mid-Senior</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </section>
+
+                    <label for="image">Image :</label><br>
+                    <input type="file" id="image" name="image" ><br>
+
+                    <input class="btn" type="submit" >
+
+
+                </form>
+            </fieldset>
+        </section>
+        <section id="cardId"></section>
+    </main>
     <footer>
         <i class="fa-solid fa-phone"></i>
         <i class="fa-solid fa-envelope"></i>
