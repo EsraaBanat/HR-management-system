@@ -3,11 +3,19 @@
 // Daeclaration:
 let cardId = document.getElementById("cardId");
 let form = document.getElementById("card");
+let employ = [];
+employ[0] = new Employee("1000", "Ghazi Samer", "Administration", "Senior", "./assest/Ghazi.jpg");
+employ[1] = new Employee("1001", "Lana Ali", "Finance", "Senior", "./assest/Lana.jpg");
+employ[2] = new Employee("1002", "Tamara Ayoub", "Marketing", "Senior", "./assest/Tamara.jpg");
+employ[3] = new Employee("1003", "Safi Walid", "Administration", "Mid-Senior", "./assest/Safi.jpg");
+employ[4] = new Employee("1004", "Omar Zaid", "Development", "Senior", "./assest/Omar.jpg");
+employ[5] = new Employee("1005", 'Rana Saleh', "Development", "Junior", "./assest/Rana.jpg");
+employ[6] = new Employee("1006", "Hadi Ahmad", "Finance", "Mid-Senior", "./assest/Hadi.jpg ");
 
 
 
 
- //Constructor:
+//Constructor:
 function Employee(id, name, department, level, image) {
     
     this.id = rdmId();
@@ -16,40 +24,47 @@ function Employee(id, name, department, level, image) {
     this.level = level;
     this.image = image;
 
+    
 }
 
 
 Employee.prototype.render = function () {
     
+    let cardBox = document.createElement('div');
+    cardId.appendChild(cardBox);
+
     // creating the image of Emolyee :
     let imageEl = document.createElement('img');
     imageEl.src = this.image;
-    cardId.appendChild(imageEl);
+    cardBox.appendChild(imageEl);
 
     // createing h2 of Emplyee Name :
     let fullName = document.createElement('h2');
     fullName.textContent = `Name: ${this.name}` ; 
-    cardId.appendChild(fullName);
+    cardBox.appendChild(fullName);
 
     let empId = document.createElement('h2');
     empId.textContent = `ID: ${this.id}` ; 
-    cardId.appendChild(empId); 
+    cardBox.appendChild(empId); 
 
     // createing h2 of department:
     let departmentEI = document.createElement('h2');
     departmentEI.textContent = `Department :${this.department}` ;
-    cardId.appendChild(departmentEI);
+    cardBox.appendChild(departmentEI);
     
     // createing h2 of  level:
     let levelEI = document.createElement('h2');
     levelEI.textContent = `Level : ${this.level}` ;
-    cardId.appendChild(levelEI);
+    cardBox.appendChild(levelEI);
     
 }
 
 //Event listener
 form.addEventListener("submit", handleSubmit);
 
+for (i = 0; i < employ.length;i++){
+    employ[i].render();
+}
 
 // Functions:
 
