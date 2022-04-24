@@ -4,6 +4,9 @@
 let cardId = document.getElementById("cardId");
 let form = document.getElementById("card");
 let employ = [];
+const tax = 0.075 ;
+let grossSalary = 0;
+
 employ[0] = new Employee("1000", "Ghazi Samer", "Administration", "Senior", "./assest/Ghazi.jpg");
 employ[1] = new Employee("1001", "Lana Ali", "Finance", "Senior", "./assest/Lana.jpg");
 employ[2] = new Employee("1002", "Tamara Ayoub", "Marketing", "Senior", "./assest/Tamara.jpg");
@@ -16,15 +19,17 @@ employ[6] = new Employee("1006", "Hadi Ahmad", "Finance", "Mid-Senior", "./asses
 
 
 //Constructor:
-function Employee(id, name, department, level, image) {
+function Employee(empNmbr, name, department, level, image,id) {
     
-    this.id = rdmId();
+    this.empNmbr = empNmbr;
     this.name = name;
     this.department = department;
     this.level = level;
     this.image = image;
+    this.id = rdmId();
 
-    
+    employ.push(this);
+
 }
 
 
@@ -43,10 +48,10 @@ Employee.prototype.render = function () {
     fullName.textContent = `Name: ${this.name}` ; 
     cardBox.appendChild(fullName);
 
-    let empId = document.createElement('h2');
-    empId.textContent = `ID: ${this.id}` ; 
-    cardBox.appendChild(empId); 
-
+    let nmbrEI = document.createElement('h2');
+    nmbrEI.textContent = `ID : ${this.empNmbr}` ;
+    cardBox.appendChild(nmbrEI);
+    
     // createing h2 of department:
     let departmentEI = document.createElement('h2');
     departmentEI.textContent = `Department :${this.department}` ;
@@ -57,21 +62,48 @@ Employee.prototype.render = function () {
     levelEI.textContent = `Level : ${this.level}` ;
     cardBox.appendChild(levelEI);
     
+    let empId = document.createElement('h2');
+    empId.textContent = `${this.id}` ; 
+    cardBox.appendChild(empId); 
+
 }
 
-//Event listener
+Employee.prototype.sal = function () {
+    if (this.level== "Senior") {
+        grossSalary = getRndInteger(1500, 2000);
+    }
+    else if(this.level == "Mid-Senior"){
+        grossSalary = getRndInteger(1000, 1500);
+    }
+    else if(this.level == "Junior"){
+        grossSalary = getRndInteger(500, 1000);
+    }
+    let netSalary = grossSalary - (grossSalary * tax);
+    this.salary = netSalary;
+}
+
+
 form.addEventListener("submit", handleSubmit);
 
-for (i = 0; i < employ.length;i++){
-    employ[i].render();
-}
+getData();
+
 
 // Functions:
+
+function renderAll() {
+    for (i = 0; i < employ.length; i++){
+        employ[i].sal();
+        employ[i].render();
+    }
+}
 
 function rdmId() {
   return Math.floor(1000 + Math.random() * 9000);
 }
  
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 function handleSubmit(event) {
 
@@ -82,14 +114,36 @@ function handleSubmit(event) {
     let department = event.target.department.value;
     let level = event.target.level.value;
     let image = event.target.image.value;
+    let empNmbr = 1000 + employ.length;
+    let salary = Employee.prototype.sal ();
 
     // create a new employee card:
-    let newEmp = new Employee(id,fullName, department, level, image);
+    let newEmp = new Employee(empNmbr, fullName, department, level, image, id, salary);
+    newEmp.sal();
     newEmp.render();
     console.log(newEmp);
+    saveData(employ);
 
 }
 
+function saveData(data) {
+
+    let stringfiyData = JSON.stringify(data);
+    localStorage.setItem("employeeCard", stringfiyData);
+}
+
+
+function getData() {
+    let retrievedData = localStorage.getItem("employeeCard");
+    let arrayData = JSON.parse(retrievedData);
+    if (arrayData != null) {
+        for (let i = 0; i < arrayData.length; i++) {
+            new Employee(arrayData[i].empNmbr, arrayData[i].name, arrayData[i].department, arrayData[i].level, arrayData[i].image, arrayData[i].id);
+        } 
+    }
+
+renderAll();
+}
 
 
 

@@ -46,15 +46,14 @@ header a.accounting {
 
 main {
     background-color: #5584AC;
-    display: flex;
-    padding: 1.8rem;
+    /* display: flex; */
+    /* padding: 1.8rem; */
     align-items: center;
 }
 
 main fieldset {
     font-size: 1rem;
-    padding: 2rem 5rem;
-
+    padding: 2rem 5rem 5rem 40rem;
 
 }
 
@@ -62,23 +61,25 @@ main fieldset {
 main form input {
     padding: 0.5rem;
     border: 0.1rem solid black;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     margin: 0rem -3rem;
 }
 
 main form label {
     display: block;
     font-weight: 600;
+    font-size: 1.5rem;
     margin-top: 1rem;
     margin-left: -3rem;
 }
 
 main form select {
-    padding: 0.5rem 1.5rem;
     border: 0.1rem solid black;
-    font-size: .9rem;
-    font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 500;
     margin: 0rem -3rem;
+    padding: 0.5rem 1rem;
 }
 
 .btn {
@@ -92,17 +93,12 @@ main form select {
 
 
 
-#employeeCard {
-    margin: -45rem 20rem 0rem 0rem;
-
-}
-
 #cardId {
-    margin: -15rem;
-    padding: 15rem 2rem;
+    padding: 2rem 10rem;
     display: grid;
-    grid-template-columns: repeat(3, minmax(20rem, 1fr));
+    grid-template-columns: repeat(3, minmax(30rem, 1fr));
     text-align: start;
+        border: .2rem solid black;
 }
 
 #cardId img {
@@ -115,18 +111,18 @@ main form select {
     margin-bottom: 2rem;
 
 
-#cardId h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    font-family: 'Roboto Slab', serif;
-    
+    #cardId h2 {
+        font-size: 1.4rem;
+        font-weight: 400;
+        font-family: 'Roboto Slab', serif;
 
-}
 
-footer {
-    background-color: #EEEEEE;
-    padding: 1rem;
-    border: 1rem;
-    font-size: 1rem;
-    text-align: center;
-}
+    }
+
+    footer {
+        background-color: #EEEEEE;
+        padding: 1rem;
+        border: 1rem;
+        font-size: 1rem;
+        text-align: center;
+    }
