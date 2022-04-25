@@ -3,7 +3,8 @@
 
 let employeeCard = localStorage.getItem("employeeCard");
 let emp = JSON.parse(employeeCard);
-let tableEl = document.getElementById("table1");
+let tableOne = document.getElementById("table1");
+let tableTwo = document.getElementById("table2");
 
 
 getAccountData("Administration");
@@ -29,12 +30,13 @@ function getAccountData(department) {
         avgSal = totalSal / numOfEmp;
         
         if (element.department == department) {
-            
+
             numOfDepEmp = numOfDepEmp + 1;
             totalDepSal = totalDepSal + (element.salary);
             avgDepSal = totalDepSal / numOfDepEmp;
         }
     })
+    
     
     console.log(`For each ${department} Department:`);
     console.log(`# of Employees :${numOfDepEmp}`);
@@ -45,9 +47,31 @@ function getAccountData(department) {
     console.log(`# of Employees : ${numOfEmp}`);
     console.log(`Total Slaries : ${totalSal}`);
     console.log(`Avg of Salaries :${avgSal}`);
-
+    
+    let dep = [department,numOfDepEmp,totalDepSal,avgDepSal];
+    let all = [numOfEmp,totalSal,avgSal];
+    
+    for (let i = 0; i < 1; i++){
+        let row = document.createElement("tr");
+    for (let j = 0; j< 4;j++){
+        let depCell = document.createElement("td");
+        depCell.textContent = dep[j];
+        row.appendChild(depCell);
+    }
+        tableOne.appendChild(row);
+    }
+    for (let i = 0; i < 1; i++){
+       let row = document.createElement("tr");
+    for (let j = 0; j< 3;j++){
+        let cell = document.createElement("td");
+        cell.textContent = all[j];
+        row.appendChild(cell);
+    }
+    
+        tableTwo.appendChild(row);
+    }
+    
 }
-
 
 
 
